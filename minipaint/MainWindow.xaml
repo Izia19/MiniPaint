@@ -1,0 +1,50 @@
+﻿<Window x:Class="minipaint.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:minipaint"
+        mc:Ignorable="d"
+        Title="MiniPaint" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ToolBar Grid.Row="0">
+            <Button Style="{StaticResource button_style}" Click="wybierz_figure" Tag="Rectangle">Rectangle</Button>
+            <Separator/>
+            <Button Style="{StaticResource button_style}" Click="wybierz_figure" Tag="Elipse">Elipse</Button>
+            <Separator/>
+            <Button Style="{StaticResource button_style}" Click="wybierz_figure" Tag="Line">Line</Button>
+            <Separator/>
+            <Button Style="{StaticResource button_style}" Click="wybierz_figure" Tag="Label">Label</Button>
+            <Separator/>
+            <Label>Color:</Label>
+            <ComboBox SelectedIndex="0" Padding="10 0 10 0" SelectionChanged="zmien_color">
+                <ComboBoxItem Foreground="Black">Black</ComboBoxItem>
+                <ComboBoxItem Foreground="Blue">Blue</ComboBoxItem>
+                <ComboBoxItem Foreground="Red">Red</ComboBoxItem>
+                <ComboBoxItem Foreground="Green">Green</ComboBoxItem>
+                <ComboBoxItem Foreground="Pink">Pink</ComboBoxItem>
+                <ComboBoxItem Foreground="Coral">Coral</ComboBoxItem>
+            </ComboBox>
+            <Separator/>
+            <Label>Width:</Label>
+            <TextBox x:Name="Szerokosc" PreviewTextInput="tylko_cyfra" Width="30" TextChanged="wpisana_wartosc">0</TextBox>
+            <Label>Height:</Label>
+            <TextBox x:Name="Wysokosc" PreviewTextInput="tylko_cyfra" Width="30" TextChanged="wpisana_wartosc">0</TextBox>
+            <Button Style="{StaticResource button_style}" Click="wyczysc_wysokosc_szerokosc">Wyczyść</Button>
+            <Button x:Name="Edycja_button" Style="{StaticResource button_style}" Click="edycja_true">Edytuj</Button>
+            <Separator/>
+            <Label>Height line:</Label>
+            <TextBox x:Name="Szerokosc_line" PreviewTextInput="tylko_cyfra" Width="30"></TextBox>
+            <Separator/>
+            <Button x:Name="Gumka_button" Style="{StaticResource button_style}" Click="gumka_true">Gumka</Button>
+        </ToolBar>
+        <Canvas x:Name="Canvas" Grid.Row="1" MouseMove="rysuj" MouseLeftButtonDown="lewy_przycisk_down" MouseLeftButtonUp="lewy_przycisk_up" MouseRightButtonDown="prawy_przycisk_down" MouseRightButtonUp="prawy_przycisk_up">
+
+        </Canvas>
+    </Grid>
+</Window>
